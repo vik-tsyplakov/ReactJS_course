@@ -19,7 +19,7 @@ function App() {
       <form>
         <input type="text" placeholder="Post name" />
         <input type="text" placeholder="Description" />
-        <MyButton buttonText={"Create post"} />
+        <MyButton>Create post</MyButton>
       </form>
       <PostsList posts={posts} />
     </div>
