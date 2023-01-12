@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Counter from "./components/Counter";
-import PostItem from "./components/PostItem";
+import PostsList from "./components/PostsList";
 import "./styles/App.css";
 
 function App() {
@@ -14,9 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {posts.map((post) => (
-        <PostItem post={post} key={post.id} />
-      ))}
+      <PostsList posts={posts} />
     </div>
   );
 }
