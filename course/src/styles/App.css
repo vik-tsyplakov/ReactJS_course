@@ -11,3 +11,10 @@
   width: 800px;
   background-color: aquamarine;
 }
+.post {
+  display: flex;
+  padding: 15px;
+  margin-top: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
