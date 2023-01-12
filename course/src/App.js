@@ -6,7 +6,31 @@ import "./styles/App.css";
 function App() {
   return (
     <div className="App">
-      <PostItem />
+      <PostItem
+        id={1}
+        title={"JS"}
+        description={"JS is programming language"}
+      />
+      <PostItem
+        id={2}
+        title={"C#"}
+        description={"C# is programming language"}
+      />
+      <PostItem
+        id={3}
+        title={"Java"}
+        description={"Java is programming language"}
+      />
+      <PostItem
+        id={4}
+        title={"Python"}
+        description={"Python is programming language"}
+      />
+      <PostItem
+        id={5}
+        title={"PHP"}
+        description={"PHP is programming language"}
+      />
     </div>
   );
 }
