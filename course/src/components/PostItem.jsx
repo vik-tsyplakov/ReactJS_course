@@ -6,10 +6,9 @@ export default function PostItem(props) {
       <div className="post">
         <div className="post__content">
           <strong>
-            {" "}
-            {props.id}. {props.title}
+            {props.post.id}. {props.post.title}
           </strong>
-          <div>{props.description}</div>
+          <div>{props.post.description}</div>
         </div>
         <div className="post__btn">
           <button>delete</button>
