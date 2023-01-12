@@ -1,11 +1,9 @@
+import React from "react";
+import Counter from "./components/Counter";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <a className="App-link" href="https://reactjs.org">
-          Learn React
-        </a>
-      </header>
+      <Counter />
     </div>
   );
 }
