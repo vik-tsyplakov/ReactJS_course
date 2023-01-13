@@ -25,6 +25,8 @@ function App() {
       description,
     };
     setPosts([...posts, newPost]);
+    setTitle("");
+    setBody("");
   };
 
   return (
