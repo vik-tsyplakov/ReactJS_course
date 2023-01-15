@@ -28,7 +28,11 @@ function App() {
   }, [selectedSort, posts]);
 
   const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter((post) => post.title.includes(searchQuery));
+    return sortedPosts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchQuery) ||
+        post.title.toUpperCase().includes(searchQuery)
+    );
   }, [searchQuery, sortedPosts]);
 
   const createPost = (newPost) => {
@@ -61,7 +65,7 @@ function App() {
           { value: "description", name: "By description" },
         ]}
       />
-      {posts.length !== 0 ? (
+      {sortedAndSearchedPosts.length !== 0 ? (
         <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       ) : (
         <p style={{ textAlign: "center", fontSize: "16px" }}>Notes not found</p>
