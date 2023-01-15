@@ -25,7 +25,11 @@ function App() {
   return (
     <div className="App">
       <PostForm create={createPost} />
-      <PostsList remove={removePost} posts={posts} />
+      {posts.length !== 0 ? (
+        <PostsList remove={removePost} posts={posts} />
+      ) : (
+        <p style={{ textAlign: "center", fontSize: "16px" }}>Notes not found</p>
+      )}
     </div>
   );
 }
