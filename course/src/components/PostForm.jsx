@@ -34,7 +34,9 @@ export default function PostForm(props) {
           type="text"
           placeholder="Description"
         />
-        <MyButton onClick={addNewPost}>Create post</MyButton>
+        <MyButton onClick={addNewPost} style={{ backgroundColor: "#00DC01" }}>
+          Create post
+        </MyButton>
       </form>
     </div>
   );
