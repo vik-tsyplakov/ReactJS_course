@@ -31,7 +31,7 @@ function App() {
     return sortedPosts.filter(
       (post) =>
         post.title.toLowerCase().includes(searchQuery) ||
-        post.title.toUpperCase().includes(searchQuery)
+        post.description.toLowerCase().includes(searchQuery)
     );
   }, [searchQuery, sortedPosts]);
 
@@ -53,7 +53,7 @@ function App() {
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
       <MyInput
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
         placeholder="Search..."
       />
       <MySelect
