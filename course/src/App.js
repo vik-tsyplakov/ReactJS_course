@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Counter from "./components/Counter";
 import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
@@ -26,16 +26,14 @@ function App() {
 
   const [selectedSort, setSelectedSort] = useState("");
 
-  function getSortedPosts() {
+  const sortedPosts = useMemo(() => {
     if (selectedSort) {
       return [
         ...posts.sort((a, b) => a[selectedSort].localeCompare(b[selectedSort])),
       ];
     }
     return posts;
-  }
-
-  const sortedPosts = getSortedPosts();
+  }, [selectedSort, posts]);
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
