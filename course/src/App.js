@@ -1,8 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Counter from "./components/Counter";
+import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
-import MyButton from "./components/UI/button/MyButton";
-import MyInput from "./components/UI/input/MyInput";
 
 import "./styles/App.css";
 
@@ -14,34 +13,13 @@ function App() {
     { id: 4, title: "Python", description: "Python is programming language" },
     { id: 5, title: "PHP", description: "PHP is programming language" },
   ]);
-  const [post, setPost] = useState({
-    title: "",
-    description: "",
-  });
 
-  const addNewPost = (e) => {
-    e.preventDefault();
-    setPosts([...posts, { ...post, id: Date.now() }]);
-    setPost({ title: "", description: "" });
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost]);
   };
-
   return (
     <div className="App">
-      <form>
-        <MyInput
-          value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
-          type="text"
-          placeholder="Post name"
-        />
-        <MyInput
-          value={post.description}
-          onChange={(e) => setPost({ ...post, description: e.target.value })}
-          type="text"
-          placeholder="Description"
-        />
-        <MyButton onClick={addNewPost}>Create post</MyButton>
-      </form>
+      <PostForm create={createPost} />
       <PostsList posts={posts} />
     </div>
   );
