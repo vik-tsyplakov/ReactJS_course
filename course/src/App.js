@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Counter from "./components/Counter";
 import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
+import MyInput from "./components/UI/input/MyInput";
 import MySelect from "./components/UI/select/MySelect";
 
 import "./styles/App.css";
@@ -25,15 +26,32 @@ function App() {
 
   const [selectedSort, setSelectedSort] = useState("");
 
+  function getSortedPosts() {
+    if (selectedSort) {
+      return [
+        ...posts.sort((a, b) => a[selectedSort].localeCompare(b[selectedSort])),
+      ];
+    }
+    return posts;
+  }
+
+  const sortedPosts = getSortedPosts();
+
   const sortPosts = (sort) => {
     setSelectedSort(sort);
-    setPosts([...posts.sort((a, b) => a[sort].localeCompare(b[sort]))]);
   };
+
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="App">
       <PostForm create={createPost} />
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
+      <MyInput
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search..."
+      />
       <MySelect
         value={selectedSort}
         onChange={sortPosts}
@@ -44,7 +62,7 @@ function App() {
         ]}
       />
       {posts.length !== 0 ? (
-        <PostsList remove={removePost} posts={posts} />
+        <PostsList remove={removePost} posts={sortedPosts} />
       ) : (
         <p style={{ textAlign: "center", fontSize: "16px" }}>Notes not found</p>
       )}
