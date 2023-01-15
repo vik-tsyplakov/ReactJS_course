@@ -16,16 +16,8 @@ function App() {
     { id: 5, title: "PHP", description: "PHP is programming language" },
   ]);
 
-  const createPost = (newPost) => {
-    setPosts([...posts, newPost]);
-  };
-
-  const removePost = (post) => {
-    setPosts(posts.filter((p) => p.id !== post.id));
-  };
-
   const [selectedSort, setSelectedSort] = useState("");
-
+  const [searchQuery, setSearchQuery] = useState("");
   const sortedPosts = useMemo(() => {
     if (selectedSort) {
       return [
@@ -35,11 +27,21 @@ function App() {
     return posts;
   }, [selectedSort, posts]);
 
+  const sortedAndSearchedPosts = useMemo(() => {
+    return sortedPosts.filter((post) => post.title.includes(searchQuery));
+  }, [searchQuery, sortedPosts]);
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost]);
+  };
+
+  const removePost = (post) => {
+    setPosts(posts.filter((p) => p.id !== post.id));
+  };
+
   const sortPosts = (sort) => {
     setSelectedSort(sort);
   };
-
-  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="App">
@@ -60,7 +62,7 @@ function App() {
         ]}
       />
       {posts.length !== 0 ? (
-        <PostsList remove={removePost} posts={sortedPosts} />
+        <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       ) : (
         <p style={{ textAlign: "center", fontSize: "16px" }}>Notes not found</p>
       )}
