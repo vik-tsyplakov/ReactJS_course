@@ -1,10 +1,8 @@
 import React, { useMemo, useState } from "react";
 import Counter from "./components/Counter";
+import PostFilter from "./components/PostFilter";
 import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
-import MyInput from "./components/UI/input/MyInput";
-import MySelect from "./components/UI/select/MySelect";
-
 import "./styles/App.css";
 
 function App() {
@@ -15,25 +13,24 @@ function App() {
     { id: 4, title: "Python", description: "Python is programming language" },
     { id: 5, title: "PHP", description: "PHP is programming language" },
   ]);
+  const [filter, setFilter] = useState({ sort: "", query: "" });
 
-  const [selectedSort, setSelectedSort] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
   const sortedPosts = useMemo(() => {
-    if (selectedSort) {
+    if (filter.sort) {
       return [
-        ...posts.sort((a, b) => a[selectedSort].localeCompare(b[selectedSort])),
+        ...posts.sort((a, b) => a[filter.sort].localeCompare(b[filter.sort])),
       ];
     }
     return posts;
-  }, [selectedSort, posts]);
+  }, [filter.sort, posts]);
 
   const sortedAndSearchedPosts = useMemo(() => {
     return sortedPosts.filter(
       (post) =>
-        post.title.toLowerCase().includes(searchQuery) ||
-        post.description.toLowerCase().includes(searchQuery)
+        post.title.toLowerCase().includes(filter.query) ||
+        post.description.toLowerCase().includes(filter.query)
     );
-  }, [searchQuery, sortedPosts]);
+  }, [filter.query, sortedPosts]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -43,28 +40,11 @@ function App() {
     setPosts(posts.filter((p) => p.id !== post.id));
   };
 
-  const sortPosts = (sort) => {
-    setSelectedSort(sort);
-  };
-
   return (
     <div className="App">
       <PostForm create={createPost} />
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
-      <MyInput
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
-        placeholder="Search..."
-      />
-      <MySelect
-        value={selectedSort}
-        onChange={sortPosts}
-        defaultValue="Sort by"
-        options={[
-          { value: "title", name: "By name" },
-          { value: "description", name: "By description" },
-        ]}
-      />
+      <PostFilter filter={filter} setFilter={setFilter} />
       {sortedAndSearchedPosts.length !== 0 ? (
         <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       ) : (
