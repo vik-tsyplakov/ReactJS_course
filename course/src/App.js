@@ -9,11 +9,11 @@ import "./styles/App.css";
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: 1, title: "JS", description: "JS is programming language" },
-    { id: 2, title: "C#", description: "C# is programming language" },
-    { id: 3, title: "Java", description: "Java is programming language" },
-    { id: 4, title: "Python", description: "Python is programming language" },
-    { id: 5, title: "PHP", description: "PHP is programming language" },
+    { id: 1, title: "JS", body: "JS is programming language" },
+    { id: 2, title: "C#", body: "C# is programming language" },
+    { id: 3, title: "Java", body: "Java is programming language" },
+    { id: 4, title: "Python", body: "Python is programming language" },
+    { id: 5, title: "PHP", body: "PHP is programming language" },
   ]);
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const [modal, setModal] = useState(false);
