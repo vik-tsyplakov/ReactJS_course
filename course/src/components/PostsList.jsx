@@ -1,5 +1,6 @@
 import React from "react";
 import PostItem from "./PostItem";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function PostsList(props) {
   if (!props.posts.length) {
@@ -10,14 +11,13 @@ export default function PostsList(props) {
 
   return (
     <div>
-      {props.posts.map((post, index) => (
-        <PostItem
-          number={index + 1}
-          post={post}
-          key={post.id}
-          remove={props.remove}
-        />
-      ))}
+      <TransitionGroup>
+        {props.posts.map((post, index) => (
+          <CSSTransition key={post.id} timeout={500} classNames="post">
+            <PostItem number={index + 1} post={post} remove={props.remove} />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import Counter from "./components/Counter";
 import PostFilter from "./components/PostFilter";
 import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
