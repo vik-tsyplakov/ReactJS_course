@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <MyButton
-        style={{ backgroundColor: "#00DC01", marginTop: "15px" }}
+        style={{ backgroundColor: "#00DC01", marginTop: "25px" }}
         onClick={() => setModal(true)}
       >
         Add post
