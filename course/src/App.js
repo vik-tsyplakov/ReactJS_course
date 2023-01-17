@@ -3,6 +3,7 @@ import Counter from "./components/Counter";
 import PostFilter from "./components/PostFilter";
 import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
+import MyModal from "./components/UI/MyModal/MyModal";
 import "./styles/App.css";
 
 function App() {
@@ -42,7 +43,10 @@ function App() {
 
   return (
     <div className="App">
-      <PostForm create={createPost} />
+      <MyModal>
+        <PostForm create={createPost} />
+      </MyModal>
+
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
       <PostFilter filter={filter} setFilter={setFilter} />
       <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
