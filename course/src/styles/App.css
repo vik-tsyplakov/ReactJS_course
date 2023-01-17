@@ -32,6 +32,6 @@
   opacity: 1;
 }
 .post-exit-active {
-  transform: translateX(-800px);
+  transform: translateX(2000px);
   transition: all 300ms ease-in-out;
 }
