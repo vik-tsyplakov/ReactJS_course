@@ -18,12 +18,35 @@ export default function PostForm(props) {
     props.create(newPost);
     setPost({ title: "", description: "" });
   };
+  const closeModal = () => {
+    props.setVisible(false);
+    setPost({ title: "", description: "" });
+  };
 
   return (
     <div>
       <form>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "end",
+          }}
+        >
+          <MyButton
+            style={{
+              marginBottom: "5px",
+              padding: "5px 10px",
+            }}
+            onClick={() => closeModal()}
+          >
+            X
+          </MyButton>
+        </div>
         <MyInput
           value={post.title}
+          style={{
+            marginBottom: "8px",
+          }}
           onChange={(e) => setPost({ ...post, title: e.target.value })}
           type="text"
           placeholder="Post name"

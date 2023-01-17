@@ -53,7 +53,7 @@ function App() {
         Add post
       </MyButton>
       <MyModal visible={modal} setVisible={setModal}>
-        <PostForm create={createPost} />
+        <PostForm create={createPost} setVisible={setModal} />
       </MyModal>
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
       <PostFilter filter={filter} setFilter={setFilter} />
