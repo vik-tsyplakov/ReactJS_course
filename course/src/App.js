@@ -5,6 +5,7 @@ import PostFilter from "./components/PostFilter";
 import PostForm from "./components/PostForm";
 import PostsList from "./components/PostsList";
 import MyButton from "./components/UI/button/MyButton";
+import Loader from "./components/UI/loader/Loader";
 import MyModal from "./components/UI/MyModal/MyModal";
 
 import "./styles/App.css";
@@ -44,7 +45,6 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={fetchPosts}>xx</button>
       <MyButton
         style={{ backgroundColor: "#00DC01", marginTop: "25px" }}
         onClick={() => setModal(true)}
@@ -56,7 +56,19 @@ function App() {
       </MyModal>
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
       <PostFilter filter={filter} setFilter={setFilter} />
-      <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
+      {isPostsLoading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "10px",
+          }}
+        >
+          <Loader />
+        </div>
+      ) : (
+        <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
+      )}
     </div>
   );
 }
