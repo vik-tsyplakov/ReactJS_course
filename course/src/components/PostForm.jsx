@@ -6,7 +6,7 @@ import MyInput from "./UI/input/MyInput";
 export default function PostForm(props) {
   const [post, setPost] = useState({
     title: "",
-    description: "",
+    body: "",
   });
 
   const addNewPost = (e) => {
@@ -16,11 +16,12 @@ export default function PostForm(props) {
       id: Date.now(),
     };
     props.create(newPost);
-    setPost({ title: "", description: "" });
+    setPost({ title: "", body: "" });
   };
+
   const closeModal = () => {
     props.setVisible(false);
-    setPost({ title: "", description: "" });
+    setPost({ title: "", body: "" });
   };
 
   return (
@@ -52,8 +53,8 @@ export default function PostForm(props) {
           placeholder="Post name"
         />
         <MyInput
-          value={post.description}
-          onChange={(e) => setPost({ ...post, description: e.target.value })}
+          value={post.body}
+          onChange={(e) => setPost({ ...post, body: e.target.value })}
           type="text"
           placeholder="Description"
         />
