@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "axios": "^1.2.3",
+    "react-router-dom": "^6.6.2",
     "react-transition-group": "^4.4.5"
   }
 }
