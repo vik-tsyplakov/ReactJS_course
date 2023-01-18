@@ -61,7 +61,7 @@ function App() {
           style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "10px",
+            marginTop: "30px",
           }}
         >
           <Loader />
