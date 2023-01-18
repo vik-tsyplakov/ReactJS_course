@@ -18,6 +18,7 @@ export default function PostForm(props) {
     props.create(newPost);
     setPost({ title: "", body: "" });
   };
+
   const closeModal = () => {
     props.setVisible(false);
     setPost({ title: "", body: "" });
