@@ -8,7 +8,8 @@ import PostsList from "./components/PostsList";
 import MyButton from "./components/UI/button/MyButton";
 import Loader from "./components/UI/loader/Loader";
 import MyModal from "./components/UI/MyModal/MyModal";
-import { getPageCount, getPagesArray } from "./utils/pages";
+import { getPageCount } from "./utils/pages";
+import Pagination from "./components/UI/pagination/Pagination";
 import "./styles/App.css";
 
 function App() {
@@ -25,7 +26,6 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  let pagesArray = getPagesArray(totalPages);
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(limit, page);
@@ -78,17 +78,7 @@ function App() {
       ) : (
         <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       )}
-      <div className="page__wrapper">
-        {pagesArray.map((p) => (
-          <span
-            onClick={() => changePage(p)}
-            key={p}
-            className={page === p ? "page page__current" : "page"}
-          >
-            {p}
-          </span>
-        ))}
-      </div>
+      <Pagination page={page} changePage={changePage} totalPages={totalPages} />
     </div>
   );
 }
