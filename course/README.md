@@ -2,7 +2,7 @@ Good day to all!!
 This is a mini project for React practice at the Ulbi TV course
 
 Implemented withdrawal of posts from fake API using Axios.
-Implemented on the principle of SPA. Page routing is done with react-router-dom.
+Implemented on the principle of SPA. Page routing is done with react-router-dom. Also implemented pagination
 Link to deployed application -
 
 ### `npm start`
