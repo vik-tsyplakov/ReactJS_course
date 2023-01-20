@@ -10,6 +10,7 @@ export default function AppRouter() {
     <Routes>
       <Route path="*" element={<Error />} />
       <Route path="/about" element={<About />} />
+      <Route path="/" element={<Posts />} />
       <Route path="/posts" element={<Posts />} />
       <Route path="/posts/:id" element={<PostIdPage />} />
     </Routes>
