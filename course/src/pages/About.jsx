@@ -11,7 +11,7 @@ export default function About() {
           padding: "35px 20px",
           maxWidth: "800px",
           margin: "0 auto",
-          height: "93vh",
+          height: "80vh",
         }}
       >
         <h1 style={{ fontSize: "18px", marginBottom: "10px" }}>About Page</h1>

@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 #root {
   display: flex;
@@ -57,7 +58,7 @@
   font-weight: 700;
 }
 .navbar {
-  height: 7vh;
+  height: 10vh;
   width: 100vw;
   display: flex;
   align-items: center;
