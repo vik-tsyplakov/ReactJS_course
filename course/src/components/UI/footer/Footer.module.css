@@ -1,0 +1,23 @@
+.footer {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  padding: 0 30px;
+  background-color: lightcyan;
+}
+.footer__content {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.footer__social {
+  width: 180px;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}
+.social__item {
+  width: 28px;
+  height: 28px;
+}
