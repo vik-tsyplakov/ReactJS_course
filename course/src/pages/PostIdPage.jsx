@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PostService from "../API/PostService";
+import CommentItem from "../components/CommentItem";
 import { useFetching } from "../components/Hooks/useFetching";
 import Loader from "../components/UI/loader/Loader";
 
@@ -49,13 +50,10 @@ export default function PostIdPage() {
             {". "}
             {post.title}
           </p>
-          <p>Comments</p>
+          <p>Comments:</p>
           <div>
-            {comments.map((comment) => (
-              <div style={{ marginTop: "20px" }}>
-                <p style={{ marginBottom: "10px" }}>{comment.email}</p>
-                <div>{comment.body}</div>
-              </div>
+            {comments.map((comment, index) => (
+              <CommentItem key={index} comment={comment} />
             ))}
           </div>
         </div>
