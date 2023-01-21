@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PostService from "./../API/PostService";
 import { useFetching } from "./../components/Hooks/useFetching";
 import { usePosts } from "./../components/Hooks/usePosts";
@@ -26,16 +26,31 @@ function Posts() {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
+  const lastElement = useRef();
+  const observer = useRef();
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(limit, page);
-    setPosts(response.data);
+    setPosts([...posts, ...response.data]);
     const totalCount = response.headers["x-total-count"];
     setTotalPages(getPageCount(totalCount, limit));
   });
 
   useEffect(() => {
-    fetchPosts();
+    if (isPostsLoading) return;
+    if (observer.current) observer.current.disconnect();
+    let callback = function (entries, observer) {
+      if (entries[0].isIntersecting && page < totalPages) {
+        setPage(page + 1);
+      }
+    };
+
+    observer.current = new IntersectionObserver(callback);
+    observer.current.observe(lastElement.current);
+  }, [isPostsLoading]);
+
+  useEffect(() => {
+    fetchPosts(limit, page);
   }, [page]);
 
   const createPost = (newPost) => {
@@ -65,7 +80,12 @@ function Posts() {
       <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
       <PostFilter filter={filter} setFilter={setFilter} />
       {postError && <h2>An error has occurred: {postError}</h2>}
-      {isPostsLoading ? (
+      <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
+      <div
+        ref={lastElement}
+        style={{ height: "20px", background: "green" }}
+      ></div>
+      {isPostsLoading && (
         <div
           style={{
             display: "flex",
@@ -75,8 +95,6 @@ function Posts() {
         >
           <Loader />
         </div>
-      ) : (
-        <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       )}
       <Pagination page={page} changePage={changePage} totalPages={totalPages} />
     </div>
