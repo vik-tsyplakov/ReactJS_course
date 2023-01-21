@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PostService from "./../API/PostService";
 import { useFetching } from "./../components/Hooks/useFetching";
 import { usePosts } from "./../components/Hooks/usePosts";
@@ -11,6 +11,7 @@ import MyModal from "./../components/UI/MyModal/MyModal";
 import { getPageCount } from "./../utils/pages";
 import Pagination from "./../components/UI/pagination/Pagination";
 import "./../styles/App.css";
+import { useObserver } from "../components/Hooks/useObserver";
 
 function Posts() {
   const [posts, setPosts] = useState([
@@ -26,16 +27,23 @@ function Posts() {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
+  const lastElement = useRef();
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(limit, page);
-    setPosts(response.data);
+    setPosts([...posts, ...response.data]);
     const totalCount = response.headers["x-total-count"];
     setTotalPages(getPageCount(totalCount, limit));
   });
+  {
+    /* realization endless-post-feed */
+  }
+  // useObserver(lastElement, page < totalPages, isPostsLoading, () => {
+  //   setPage(page + 1);
+  // });
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(limit, page);
   }, [page]);
 
   const createPost = (newPost) => {
@@ -54,7 +62,7 @@ function Posts() {
   return (
     <div className="App">
       <MyButton
-        style={{ backgroundColor: "#00DC01", marginTop: "25px" }}
+        style={{ backgroundColor: "#00DC01", margin: "10px 0" }}
         onClick={() => setModal(true)}
       >
         Add post
@@ -62,10 +70,17 @@ function Posts() {
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm create={createPost} setVisible={setModal} />
       </MyModal>
-      <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
-      <PostFilter filter={filter} setFilter={setFilter} />
+      <div style={{ margin: "10px 0" }}>
+        <PostFilter filter={filter} setFilter={setFilter} />
+      </div>
       {postError && <h2>An error has occurred: {postError}</h2>}
-      {isPostsLoading ? (
+      <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
+      {/* realization endless-post-feed */}
+      {/* <div
+        ref={lastElement}
+        style={{ height: "20px", background: "transparent" }}
+      ></div> */}
+      {isPostsLoading && (
         <div
           style={{
             display: "flex",
@@ -75,8 +90,6 @@ function Posts() {
         >
           <Loader />
         </div>
-      ) : (
-        <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       )}
       <Pagination page={page} changePage={changePage} totalPages={totalPages} />
     </div>
