@@ -11,6 +11,7 @@ import MyModal from "./../components/UI/MyModal/MyModal";
 import { getPageCount } from "./../utils/pages";
 import Pagination from "./../components/UI/pagination/Pagination";
 import "./../styles/App.css";
+import { useObserver } from "../components/Hooks/useObserver";
 
 function Posts() {
   const [posts, setPosts] = useState([
@@ -27,7 +28,6 @@ function Posts() {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const lastElement = useRef();
-  const observer = useRef();
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(limit, page);
@@ -36,18 +36,9 @@ function Posts() {
     setTotalPages(getPageCount(totalCount, limit));
   });
 
-  useEffect(() => {
-    if (isPostsLoading) return;
-    if (observer.current) observer.current.disconnect();
-    let callback = function (entries, observer) {
-      if (entries[0].isIntersecting && page < totalPages) {
-        setPage(page + 1);
-      }
-    };
-
-    observer.current = new IntersectionObserver(callback);
-    observer.current.observe(lastElement.current);
-  }, [isPostsLoading]);
+  useObserver(lastElement, page < totalPages, isPostsLoading, () => {
+    setPage(page + 1);
+  });
 
   useEffect(() => {
     fetchPosts(limit, page);
@@ -83,7 +74,7 @@ function Posts() {
       <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       <div
         ref={lastElement}
-        style={{ height: "20px", background: "green" }}
+        style={{ height: "20px", background: "transparent" }}
       ></div>
       {isPostsLoading && (
         <div
