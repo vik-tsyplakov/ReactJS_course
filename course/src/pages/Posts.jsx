@@ -35,10 +35,12 @@ function Posts() {
     const totalCount = response.headers["x-total-count"];
     setTotalPages(getPageCount(totalCount, limit));
   });
-
-  useObserver(lastElement, page < totalPages, isPostsLoading, () => {
-    setPage(page + 1);
-  });
+  {
+    /* realization endless-post-feed */
+  }
+  // useObserver(lastElement, page < totalPages, isPostsLoading, () => {
+  //   setPage(page + 1);
+  // });
 
   useEffect(() => {
     fetchPosts(limit, page);
@@ -73,10 +75,11 @@ function Posts() {
       </div>
       {postError && <h2>An error has occurred: {postError}</h2>}
       <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
-      <div
+      {/* realization endless-post-feed */}
+      {/* <div
         ref={lastElement}
         style={{ height: "20px", background: "transparent" }}
-      ></div>
+      ></div> */}
       {isPostsLoading && (
         <div
           style={{
