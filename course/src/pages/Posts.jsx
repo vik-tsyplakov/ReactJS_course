@@ -60,7 +60,7 @@ function Posts() {
   return (
     <div className="App">
       <MyButton
-        style={{ backgroundColor: "#00DC01", marginTop: "25px" }}
+        style={{ backgroundColor: "#00DC01", margin: "10px 0" }}
         onClick={() => setModal(true)}
       >
         Add post
@@ -68,8 +68,9 @@ function Posts() {
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm create={createPost} setVisible={setModal} />
       </MyModal>
-      <hr style={{ marginTop: "10px", marginBottom: "15px" }} />
-      <PostFilter filter={filter} setFilter={setFilter} />
+      <div style={{ margin: "10px 0" }}>
+        <PostFilter filter={filter} setFilter={setFilter} />
+      </div>
       {postError && <h2>An error has occurred: {postError}</h2>}
       <PostsList remove={removePost} posts={sortedAndSearchedPosts} />
       <div
