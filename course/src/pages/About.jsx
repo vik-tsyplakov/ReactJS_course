@@ -9,7 +9,7 @@ export default function About() {
           flexDirection: "column",
           alignItems: "center",
           padding: "35px 20px",
-          maxWidth: "800px",
+          maxWidth: "1164px",
           margin: "0 auto",
           height: "80vh",
         }}

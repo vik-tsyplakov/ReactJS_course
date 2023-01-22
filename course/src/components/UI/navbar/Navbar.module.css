@@ -1,0 +1,24 @@
+.navbar {
+  height: 90px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  background: #cce1f4;
+  border-radius: 0px 0px 20px 20px;
+}
+.navbar__links {
+  margin-left: auto;
+  margin-right: 67px;
+  padding: 30px 0;
+}
+.navbar__links a {
+  color: #043e72;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+}
+.navbar__links a:nth-last-child(0n + 1) {
+  margin-left: 30px;
+}
