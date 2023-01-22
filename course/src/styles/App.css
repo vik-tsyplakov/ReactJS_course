@@ -57,20 +57,7 @@
   border: 2px solid rgb(0, 220, 1);
   font-weight: 700;
 }
-.navbar {
-  height: 10vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  padding: 0 30px;
-  background-color: lightcyan;
-}
-.navbar__links {
-  margin-left: auto;
-}
-.navbar__links a {
-  margin-left: 15px;
-}
+
 @media (max-width: 450px) {
   .App {
     max-width: 300px;
