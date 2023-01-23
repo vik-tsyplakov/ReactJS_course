@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import MyButton from "./UI/button/MyButton";
+import MyButtonGreen from "./UI/button/MyButtonGreen";
 import MyInput from "./UI/input/MyInput";
 
 export default function PostForm(props) {
@@ -58,10 +59,8 @@ export default function PostForm(props) {
           type="text"
           placeholder="Description"
         />
-        <div style={{ marginTop: "7px" }}>
-          <MyButton onClick={addNewPost} style={{ backgroundColor: "#00DC01" }}>
-            Create post
-          </MyButton>
+        <div style={{ marginTop: "15px" }}>
+          <MyButtonGreen onClick={addNewPost}>Create post</MyButtonGreen>
         </div>
       </form>
     </div>

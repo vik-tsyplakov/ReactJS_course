@@ -5,7 +5,7 @@ import { usePosts } from "./../components/Hooks/usePosts";
 import PostFilter from "./../components/PostFilter";
 import PostForm from "./../components/PostForm";
 import PostsList from "./../components/PostsList";
-import MyButton from "./../components/UI/button/MyButton";
+import MyButtonGreen from "./../components/UI/button/MyButtonGreen";
 import Loader from "./../components/UI/loader/Loader";
 import MyModal from "./../components/UI/MyModal/MyModal";
 import { getPageCount } from "./../utils/pages";
@@ -61,12 +61,12 @@ function Posts() {
 
   return (
     <div className="App">
-      <MyButton
-        style={{ backgroundColor: "#00DC01", margin: "10px 0" }}
+      <MyButtonGreen
+        style={{ margin: "10px 0" }}
         onClick={() => setModal(true)}
       >
         Add post
-      </MyButton>
+      </MyButtonGreen>
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm create={createPost} setVisible={setModal} />
       </MyModal>
