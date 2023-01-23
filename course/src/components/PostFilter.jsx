@@ -5,13 +5,15 @@ import MySelect from "./UI/select/MySelect";
 export default function PostFilter({ filter, setFilter }) {
   return (
     <div>
-      <MyInput
-        value={filter.query}
-        onChange={(e) =>
-          setFilter({ ...filter, query: e.target.value.toLowerCase() })
-        }
-        placeholder="Search..."
-      />
+      <div style={{ marginBottom: "10px" }}>
+        <MyInput
+          value={filter.query}
+          onChange={(e) =>
+            setFilter({ ...filter, query: e.target.value.toLowerCase() })
+          }
+          placeholder="Search..."
+        />
+      </div>
       <MySelect
         value={filter.sort}
         onChange={(selectedSort) =>
