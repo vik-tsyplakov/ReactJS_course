@@ -10,10 +10,10 @@ export default function PostItem(props) {
     <div>
       <div className="post">
         <div className="post__content">
-          <strong>
+          <div className="content__title">
             {props.post.id}. {props.post.title}
-          </strong>
-          <div>{props.post.body}</div>
+          </div>
+          <div className="content__body">{props.post.body}</div>
         </div>
         <div className="post__btn">
           <MyButtonBlue onClick={() => navigate(`/posts/${props.post.id}`)}>

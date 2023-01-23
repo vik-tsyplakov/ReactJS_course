@@ -15,13 +15,17 @@
   padding: 20px;
 }
 .post {
-  background-color: #e0fff0;
   display: flex;
-  padding: 15px;
+  padding: 30px 60px;
   margin-top: 15px;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgb(91, 32, 32);
+  background: #fff6ef;
+  border-radius: 14px;
+  transition: all 300ms ease-in-out;
+}
+.post:hover {
+  box-shadow: 4px 4px 0px rgba(223, 184, 153, 0.7);
 }
 .post-enter {
   opacity: 1;
@@ -37,6 +41,19 @@
 .post-exit-active {
   transform: translateX(2000px);
   transition: all 300ms ease-in-out;
+}
+.post__content {
+  font-family: "Nunito";
+  font-style: normal;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000000;
+}
+.content__title {
+  font-weight: 700;
+}
+.content__body {
+  font-weight: 400;
 }
 .post__btn {
   display: flex;
