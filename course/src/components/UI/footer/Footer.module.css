@@ -1,11 +1,12 @@
 .footer {
-  height: 10vh;
+  height: 90px;
   width: 100vw;
   display: flex;
   margin: 0 auto;
   align-items: center;
-  padding: 0 30px;
-  background-color: lightcyan;
+
+  background: #cce1f4;
+  border-radius: 20px 20px 0px 0px;
 }
 .footer__content {
   margin: 0 auto;
@@ -20,4 +21,23 @@
 .social__item {
   width: 28px;
   height: 28px;
+  transition: all 300ms ease-in-out;
+}
+.github_icon {
+  background-image: url("./../../../img/github_icon.svg");
+}
+.github_icon:hover {
+  background-image: url("./../../../img/github_icon_hover.svg");
+}
+.linkedin_icon {
+  background-image: url("./../../../img/linkedin_icon.svg");
+}
+.linkedin_icon:hover {
+  background-image: url("./../../../img/linkedin_icon_hover.svg");
+}
+.mail_icon {
+  background-image: url("./../../../img/mail_icon.svg");
+}
+.mail_icon:hover {
+  background-image: url("./../../../img/mail_icon_hover.svg");
 }
