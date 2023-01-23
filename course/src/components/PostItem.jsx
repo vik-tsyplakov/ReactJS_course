@@ -1,5 +1,5 @@
 import React from "react";
-import MyButton from "./UI/button/MyButton";
+import MyButtonBlue from "./UI/button/MyButtonBlue";
 import MyButtonRed from "./UI/button/MyButtonRed";
 import { useNavigate } from "react-router-dom";
 
@@ -16,12 +16,9 @@ export default function PostItem(props) {
           <div>{props.post.body}</div>
         </div>
         <div className="post__btn">
-          <MyButton
-            style={{ background: "#A0FFFF", color: "black" }}
-            onClick={() => navigate(`/posts/${props.post.id}`)}
-          >
+          <MyButtonBlue onClick={() => navigate(`/posts/${props.post.id}`)}>
             open
-          </MyButton>
+          </MyButtonBlue>
           <MyButtonRed onClick={() => props.remove(props.post)}>
             delete
           </MyButtonRed>
