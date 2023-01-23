@@ -12,46 +12,21 @@ export default function Footer() {
     <footer className={cl.footer}>
       <div className={cl.footer__content}>
         <div className={cl.footer__social}>
-          <div className={cl.social__item}>
-            <a
-              href="https://github.com/vik-tsyplakov/ReactJS_course/tree/course-continuation"
-              target="_blank"
-            >
-              <img className={cl.item__img} src={github_icon} alt="github" />
-              <img
-                className={cl.item__img_hover}
-                src={github_icon_hover}
-                alt="github"
-              />
-            </a>
-          </div>
-          <div className={cl.social__item}>
-            <a
-              href="https://www.linkedin.com/in/viktor-tsyplakov-3716b525a/"
-              target="_blank"
-            >
-              <img
-                className={cl.item__img}
-                src={linkedin_icon}
-                alt="linkedin"
-              />
-              <img
-                className={cl.item__img_hover}
-                src={linkedin_icon_hover}
-                alt="linkedin"
-              />
-            </a>
-          </div>
-          <div className={cl.social__item}>
-            <a href="mailto:vik.tsyplakov@gmail.com" target="_blank">
-              <img className={cl.item__img} src={mail_icon} alt="mail" />
-              <img
-                className={cl.item__img_hover}
-                src={mail_icon_hover}
-                alt="mail"
-              />
-            </a>
-          </div>
+          <a
+            href="https://github.com/vik-tsyplakov/ReactJS_course/tree/course-continuation"
+            target="_blank"
+          >
+            <div className={cl.social__item + ` ` + cl.github_icon}></div>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/viktor-tsyplakov-3716b525a/"
+            target="_blank"
+          >
+            <div className={cl.social__item + ` ` + cl.linkedin_icon}></div>
+          </a>
+          <a href="mailto:vik.tsyplakov@gmail.com" target="_blank">
+            <div className={cl.social__item + ` ` + cl.mail_icon}></div>
+          </a>
         </div>
       </div>
     </footer>
