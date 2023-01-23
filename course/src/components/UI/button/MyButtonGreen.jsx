@@ -1,7 +1,7 @@
 import React from "react";
 import cl from "./MyButton.module.css";
 
-export default function MyButton({ children, ...props }) {
+export default function MyButtonGreen({ children, ...props }) {
   return (
     <button
       type="button"

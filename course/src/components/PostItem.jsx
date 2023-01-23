@@ -1,5 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
+import MyButtonRed from "./UI/button/MyButtonRed";
 import { useNavigate } from "react-router-dom";
 
 export default function PostItem(props) {
@@ -21,7 +22,9 @@ export default function PostItem(props) {
           >
             open
           </MyButton>
-          <MyButton onClick={() => props.remove(props.post)}>delete</MyButton>
+          <MyButtonRed onClick={() => props.remove(props.post)}>
+            delete
+          </MyButtonRed>
         </div>
       </div>
     </div>
