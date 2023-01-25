@@ -12,6 +12,7 @@
 }
 .App {
   max-width: 1164px;
+  min-width: 550px;
   padding: 20px;
 }
 .post {
@@ -78,6 +79,7 @@
 @media (max-width: 450px) {
   .App {
     max-width: 300px;
+    min-width: 200px;
     padding: 5px;
   }
   .post__btn {
