@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import MyButton from "./UI/button/MyButton";
+import MyButtonRed from "./UI/button/MyButtonRed";
+import MyButtonGreen from "./UI/button/MyButtonGreen";
 import MyInput from "./UI/input/MyInput";
 
 export default function PostForm(props) {
@@ -33,15 +34,16 @@ export default function PostForm(props) {
             justifyContent: "end",
           }}
         >
-          <MyButton
+          <MyButtonRed
             style={{
-              marginBottom: "5px",
+              marginBottom: "10px",
+              marginRight: "5px",
               padding: "5px 10px",
             }}
             onClick={() => closeModal()}
           >
             X
-          </MyButton>
+          </MyButtonRed>
         </div>
         <MyInput
           value={post.title}
@@ -58,10 +60,8 @@ export default function PostForm(props) {
           type="text"
           placeholder="Description"
         />
-        <div style={{ marginTop: "7px" }}>
-          <MyButton onClick={addNewPost} style={{ backgroundColor: "#00DC01" }}>
-            Create post
-          </MyButton>
+        <div style={{ marginTop: "15px" }}>
+          <MyButtonGreen onClick={addNewPost}>Create post</MyButtonGreen>
         </div>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
-import MyButton from "./UI/button/MyButton";
+import MyButtonBlue from "./UI/button/MyButtonBlue";
+import MyButtonRed from "./UI/button/MyButtonRed";
 import { useNavigate } from "react-router-dom";
 
 export default function PostItem(props) {
@@ -9,19 +10,18 @@ export default function PostItem(props) {
     <div>
       <div className="post">
         <div className="post__content">
-          <strong>
+          <div className="content__title">
             {props.post.id}. {props.post.title}
-          </strong>
-          <div>{props.post.body}</div>
+          </div>
+          <div className="content__body">{props.post.body}</div>
         </div>
         <div className="post__btn">
-          <MyButton
-            style={{ background: "#A0FFFF", color: "black" }}
-            onClick={() => navigate(`/posts/${props.post.id}`)}
-          >
+          <MyButtonBlue onClick={() => navigate(`/posts/${props.post.id}`)}>
             open
-          </MyButton>
-          <MyButton onClick={() => props.remove(props.post)}>delete</MyButton>
+          </MyButtonBlue>
+          <MyButtonRed onClick={() => props.remove(props.post)}>
+            delete
+          </MyButtonRed>
         </div>
       </div>
     </div>
