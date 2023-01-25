@@ -1,6 +1,6 @@
 # ReactJS_course
 
-Good day to all!!
+Good day to everyone!!
 This is a mini project for React practice
 
 Implemented withdrawal of posts from fake API using Axios.
