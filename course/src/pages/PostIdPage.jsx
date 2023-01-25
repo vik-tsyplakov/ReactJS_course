@@ -6,6 +6,7 @@ import PostService from "../API/PostService";
 import CommentItem from "../components/CommentItem";
 import { useFetching } from "../components/Hooks/useFetching";
 import Loader from "../components/UI/loader/Loader";
+import cl from "./PostIdPage.module.css";
 
 export default function PostIdPage() {
   const params = useParams();
@@ -26,27 +27,15 @@ export default function PostIdPage() {
     fetchComments(params.id);
   }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        height: "80vh",
-      }}
-    >
-      <div>This is post page with ID = {params.id}</div>
+    <main className={cl.postIdPage__wrapper}>
+      <h1 className={cl.postIdPage__title}>
+        This is post page with ID = {params.id}
+      </h1>
       {isLoading ? (
         <Loader />
       ) : (
-        <div
-          style={{
-            padding: " 20px 20px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <p>
+        <div className={cl.postIdPage__content}>
+          <p className={cl.content__title}>
             {post.id}
             {". "}
             {post.title}
@@ -59,6 +48,6 @@ export default function PostIdPage() {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }

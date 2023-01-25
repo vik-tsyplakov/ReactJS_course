@@ -14,13 +14,7 @@ import "./../styles/App.css";
 import { useObserver } from "../components/Hooks/useObserver";
 
 function Posts() {
-  const [posts, setPosts] = useState([
-    { id: 1, title: "JS", body: "JS is programming language" },
-    { id: 2, title: "C#", body: "C# is programming language" },
-    { id: 3, title: "Java", body: "Java is programming language" },
-    { id: 4, title: "Python", body: "Python is programming language" },
-    { id: 5, title: "PHP", body: "PHP is programming language" },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const [modal, setModal] = useState(false);
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
@@ -29,12 +23,14 @@ function Posts() {
   const [page, setPage] = useState(1);
   const lastElement = useRef();
 
-  const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
-    const response = await PostService.getAll(limit, page);
-    setPosts([...posts, ...response.data]);
-    const totalCount = response.headers["x-total-count"];
-    setTotalPages(getPageCount(totalCount, limit));
-  });
+  const [fetchPosts, isPostsLoading, postError] = useFetching(
+    async (limit, page) => {
+      const response = await PostService.getAll(limit, page);
+      setPosts([...posts, ...response.data]);
+      const totalCount = response.headers["x-total-count"];
+      setTotalPages(getPageCount(totalCount, limit));
+    }
+  );
   {
     /* realization endless-post-feed */
   }
@@ -44,7 +40,7 @@ function Posts() {
 
   useEffect(() => {
     fetchPosts(limit, page);
-  }, [page]);
+  }, []);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -57,10 +53,11 @@ function Posts() {
 
   const changePage = (page) => {
     setPage(page);
+    fetchPosts(limit, page);
   };
 
   return (
-    <div className="App">
+    <main className="App">
       <MyButtonGreen
         style={{ margin: "10px 0" }}
         onClick={() => setModal(true)}
@@ -88,11 +85,11 @@ function Posts() {
             marginTop: "30px",
           }}
         >
-          <Loader />
+          <Loader style={{ marginBottom: "20px" }} />
         </div>
       )}
       <Pagination page={page} changePage={changePage} totalPages={totalPages} />
-    </div>
+    </main>
   );
 }
 

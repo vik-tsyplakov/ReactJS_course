@@ -33,3 +33,8 @@
 .myBtn_blue:hover {
   box-shadow: 3px 3px 0px rgba(4, 62, 114, 0.8);
 }
+@media (max-width: 550px) {
+  .myBtn {
+    padding: 12px 10px;
+  }
+}
