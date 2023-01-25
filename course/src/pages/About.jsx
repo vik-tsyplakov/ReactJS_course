@@ -1,21 +1,12 @@
 import React from "react";
+import cl from "./About.module.css";
 
 export default function About() {
   return (
-    <main style={{ background: "#FFF0E0", width: "100vw" }}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "35px 20px",
-          maxWidth: "1164px",
-          margin: "0 auto",
-          minHeight: "80vh",
-        }}
-      >
-        <h1 style={{ fontSize: "18px", marginBottom: "10px" }}>About Page</h1>
-        <p>
+    <main className={cl.about__wrapper}>
+      <div className={cl.about__content}>
+        <h1 className={cl.content__title}>About Page</h1>
+        <p className={cl.content__text}>
           Good day to all!! This is a mini project for React practice at the
           Ulbi TV course Implemented withdrawal of posts from fake API using
           Axios. Implemented on the principle of SPA. Page routing is done with
