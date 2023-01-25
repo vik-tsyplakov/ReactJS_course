@@ -1,0 +1,15 @@
+.mySelect__body {
+  border: 1px solid #cce1f4;
+  border-radius: 5px;
+  padding: 8px 7px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+  --select-focus: rgb(0, 255, 81);
+}
+.mySelect__item {
+  background: #cce1f4;
+}
