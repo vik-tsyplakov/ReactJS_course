@@ -26,7 +26,7 @@ export default function PostIdPage() {
     fetchComments(params.id);
   }, []);
   return (
-    <div
+    <main
       style={{
         display: "flex",
         flexDirection: "column",
@@ -59,6 +59,6 @@ export default function PostIdPage() {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }

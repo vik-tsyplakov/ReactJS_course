@@ -2,7 +2,7 @@ import React from "react";
 
 export default function About() {
   return (
-    <div style={{ background: "#FFF0E0", width: "100vw" }}>
+    <main style={{ background: "#FFF0E0", width: "100vw" }}>
       <div
         style={{
           display: "flex",
@@ -22,6 +22,6 @@ export default function About() {
           react-router-dom. Also implemented pagination
         </p>
       </div>
-    </div>
+    </main>
   );
 }

@@ -57,7 +57,7 @@ function Posts() {
   };
 
   return (
-    <div className="App">
+    <main className="App">
       <MyButtonGreen
         style={{ margin: "10px 0" }}
         onClick={() => setModal(true)}
@@ -89,7 +89,7 @@ function Posts() {
         </div>
       )}
       <Pagination page={page} changePage={changePage} totalPages={totalPages} />
-    </div>
+    </main>
   );
 }
 

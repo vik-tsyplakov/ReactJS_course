@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ErrorPage() {
   return (
-    <div
+    <main
       style={{
         color: "red",
         fontWeight: "600",
@@ -12,6 +12,6 @@ export default function ErrorPage() {
     >
       <p style={{ marginTop: "20px" }}>Error - invalid page address</p>
       <p>Please enter a valid address or use navigation</p>
-    </div>
+    </main>
   );
 }

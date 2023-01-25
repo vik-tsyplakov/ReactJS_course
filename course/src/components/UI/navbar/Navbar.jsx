@@ -8,7 +8,7 @@ export default function Navbar() {
     fontWeight: "600",
   };
   return (
-    <div className={cl.navbar}>
+    <nav className={cl.navbar}>
       <div className={cl.navbar__links}>
         <NavLink
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -23,6 +23,6 @@ export default function Navbar() {
           Posts
         </NavLink>
       </div>
-    </div>
+    </nav>
   );
 }
