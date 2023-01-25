@@ -1,4 +1,4 @@
-Good day to all!!
+Good day to everyone!!
 This is a mini project for React practice at the Ulbi TV course
 
 Implemented withdrawal of posts from fake API using Axios.
