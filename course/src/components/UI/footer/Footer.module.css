@@ -1,10 +1,9 @@
 .footer {
-  height: 90px;
+  height: 10vh;
   width: 100vw;
   display: flex;
   margin: 0 auto;
   align-items: center;
-
   background: #cce1f4;
   border-radius: 20px 20px 0px 0px;
 }

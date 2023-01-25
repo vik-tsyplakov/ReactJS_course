@@ -13,6 +13,7 @@
 .App {
   max-width: 1164px;
   min-width: 550px;
+
   padding: 20px;
 }
 .post {
