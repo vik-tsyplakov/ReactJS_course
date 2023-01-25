@@ -14,13 +14,7 @@ import "./../styles/App.css";
 import { useObserver } from "../components/Hooks/useObserver";
 
 function Posts() {
-  const [posts, setPosts] = useState([
-    { id: 1, title: "JS", body: "JS is programming language" },
-    { id: 2, title: "C#", body: "C# is programming language" },
-    { id: 3, title: "Java", body: "Java is programming language" },
-    { id: 4, title: "Python", body: "Python is programming language" },
-    { id: 5, title: "PHP", body: "PHP is programming language" },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const [modal, setModal] = useState(false);
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
