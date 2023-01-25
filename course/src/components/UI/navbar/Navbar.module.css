@@ -21,3 +21,9 @@
 .navbar__links a:nth-last-child(0n + 1) {
   margin-left: 30px;
 }
+
+@media (max-width: 768px) {
+  .navbar__links {
+    margin-right: 25px;
+  }
+}
