@@ -31,7 +31,7 @@ export default function PostIdPage() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        height: "80vh",
+        minHeight: "80vh",
       }}
     >
       <div>This is post page with ID = {params.id}</div>

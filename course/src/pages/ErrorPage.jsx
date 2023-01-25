@@ -7,7 +7,7 @@ export default function ErrorPage() {
         color: "red",
         fontWeight: "600",
         textAlign: "center",
-        height: "80vh",
+        minHeight: "80vh",
       }}
     >
       <p style={{ marginTop: "20px" }}>Error - invalid page address</p>
